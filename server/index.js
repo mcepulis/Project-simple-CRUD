@@ -35,7 +35,6 @@ app.post('/api/tasks', (req, res) => {
 })
 
 //update task
-
 app.put('/api/tasks/:id', (req, res) => {
     const { id } = req.params;
     const { title } = req.body;
