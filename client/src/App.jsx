@@ -10,7 +10,7 @@ function App() {
     fetch('http://localhost:5559/api/tasks')
       .then(res => res.json())
       .then(data => {
-        console.log(data); // Log tasks array
+        console.log(data); 
         newTasks(data);
       })
       .catch(console.error);
