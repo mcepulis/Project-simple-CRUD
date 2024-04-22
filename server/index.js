@@ -1,9 +1,15 @@
 import express from 'express';
 import bodyParser from 'body-parser';
+import cors from 'cors';
+
+const corsOptions = {
+    origin: 'http://localhost:5173'
+};
 
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors(corsOptions));
 
 app.get('/test', (req, res) => {
     res.send("Veikia");
@@ -22,10 +28,10 @@ let tasks = [
 //add task
 app.post('/api/tasks', (req, res) => {
     const { title } = req.body;
-    const id = tasks.length + 1;
+    const id = tasks.length > 0 ? tasks[tasks.length - 1].id + 1 : 1;
     const newTask = { id, title };
     tasks.push(newTask);
-    res.status(201).json(tasks);
+    res.status(201).json(newTask);
 })
 
 //update task
