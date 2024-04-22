@@ -44,7 +44,7 @@ app.put('/api/tasks/:id', (req, res) => {
 //delete task
 app.delete('/api/tasks/:id', (req, res) => {
     const { id } = req.params;
-    tasks = tasks.filter(task => task.id === parseInt(id));
+    tasks = tasks.filter(task => task.id !== parseInt(id));
     res.status(204).end;
 });
 
